@@ -1,7 +1,7 @@
 # SelectDom · 任意网页 DOM 选择器
 
 一个零依赖的纯前端脚本，注入任意网页后即可通过悬浮面板拾取页面上的 DOM 元素：悬停高亮、点击选中，并在面板中管理已选列表、复制「选择器 / DOM结构 / 用户建议」模板或唯一 CSS 选择器。单文件 IIFE，同一份代码既可 `<script>` 引入，也可作为书签 / 控制台脚本运行。
-
+![SelectDom 悬浮面板与元素高亮演示](assets/README/shapecat-screenshot.png)
 ## 功能特性
 
 - **悬浮面板**：默认位于右上角，工具栏一行可拖动；拖到屏幕左右边缘（10px 阈值内）自动吸附并贴边隐藏成窄条，悬停即展开
@@ -23,7 +23,7 @@
 **第 1 步：复制下面的代码**
 
 ```javascript
-javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.js';document.head.appendChild(s);})();
+javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.min.js';document.head.appendChild(s);})();
 ```
 
 **第 2 步：新建一个书签**（在任意网页上操作即可，比如当前页面）
@@ -42,7 +42,7 @@ javascript:(function(){var s=document.createElement('script');s.src='https://cdn
 在页面 `</body>` 前加入一行：
 
 ```html
-<script src="https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.min.js"></script>
 ```
 
 ### 方式三：控制台动态注入
@@ -52,7 +52,7 @@ javascript:(function(){var s=document.createElement('script');s.src='https://cdn
 ```js
 (function () {
   var s = document.createElement('script');
-  s.src = 'https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.js';
+  s.src = 'https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.min.js';
   document.head.appendChild(s);
 })();
 ```
@@ -88,12 +88,4 @@ DOM结构: <div class="play-btn"></div>
 ```bash
 python -m http.server 8123
 # 访问 http://localhost:8123/demo.html
-```
-
-## 文件结构
-
-```
-dom-picker.js   核心脚本（单文件、零依赖）
-demo.html       本地演示与调试页
-README.md       本文档
 ```
