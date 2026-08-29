@@ -1,0 +1,4 @@
+.mimocode/
+.playwright-cli/
+__pycache__/
+*.pyc

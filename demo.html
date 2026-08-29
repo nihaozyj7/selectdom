@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SelectDom · 演示页</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Microsoft YaHei", sans-serif; color: #333; background: #f5f6f8; }
+  .header { background: #2c3e50; color: #fff; padding: 16px 24px; }
+  .header h1 { margin: 0 0 8px; font-size: 20px; }
+  .menu a { color: #bcd; margin-right: 12px; text-decoration: none; }
+  .menu a:hover { color: #fff; }
+  .container { max-width: 760px; margin: 24px auto; padding: 0 16px; }
+  .card { background: #fff; border: 1px solid #e3e6ea; border-radius: 8px; padding: 16px 20px; margin-bottom: 16px; }
+  .card h2 { margin: 0 0 8px; font-size: 16px; }
+  .highlight { background: #fff3cd; padding: 1px 4px; border-radius: 3px; }
+  .list { padding-left: 20px; }
+  .item { margin-bottom: 4px; }
+  button { padding: 6px 14px; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; }
+  .footer { text-align: center; color: #999; padding: 16px; font-size: 12px; }
+  iframe { width: 100%; height: 90px; border: 1px solid #ccc; border-radius: 6px; background: #fff; }
+  #shadow-host { margin: 16px 0; padding: 12px; border: 1px dashed #999; border-radius: 6px; background: #fafbfc; }
+</style>
+</head>
+<body>
+
+<header id="site-header" class="header">
+  <h1 class="logo">演示站点</h1>
+  <nav id="nav" class="menu">
+    <a href="#" class="menu-item">首页</a>
+    <a href="#" class="menu-item">关于</a>
+    <a href="#" class="menu-item">联系</a>
+  </nav>
+</header>
+
+<main id="main" class="container">
+  <section class="card">
+    <h2>卡片一</h2>
+    <p>一段普通文本，含 <span class="highlight">高亮词</span> 与多个段落内容。</p>
+    <p>
+      <button id="btn-alert" type="button" onclick="alert('页面按钮被点击了')">页面按钮（点击应弹窗）</button>
+    </p>
+    <p class="tip">选择模式下点击下方按钮不应触发弹窗。</p>
+  </section>
+
+  <section class="card">
+    <h2>卡片二</h2>
+    <ul class="list">
+      <li class="item">条目 A</li>
+      <li class="item">条目 B</li>
+      <li class="item">条目 C</li>
+    </ul>
+  </section>
+
+  <div id="shadow-host"><p>（Shadow DOM 宿主）</p></div>
+
+  <iframe srcdoc="&lt;p&gt;iframe 内部内容 &lt;button onclick=&quot;alert('iframe 按钮')&quot;&gt;iframe 按钮&lt;/button&gt;&lt;/p&gt;"></iframe>
+</main>
+
+<footer id="footer" class="footer">页脚 © 2025 SelectDom</footer>
+
+<script>
+  // 构造一个 Shadow DOM，用于验证“可复制 HTML、无法生成穿透选择器”的场景
+  (function () {
+    var host = document.getElementById('shadow-host');
+    var root = host.attachShadow({ mode: 'open' });
+    root.innerHTML = '<div class="shadow-inner"><p>Shadow DOM 内部元素</p></div>';
+  })();
+</script>
+
+<!-- 注入 SelectDom -->
+<script src="dom-picker.js"></script>
+</body>
+</html>
