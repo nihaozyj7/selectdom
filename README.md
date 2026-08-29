@@ -16,11 +16,24 @@
 
 ### 方式一：书签小工具（推荐）
 
-新建书签，把下面内容粘贴到网址栏。之后在任意网页点击该书签即可加载：
+> 注意：不要在浏览器地址栏直接粘贴 `javascript:` 代码再回车，Chrome / Edge 会拦截。请按下面的步骤把它添加为书签，几乎所有浏览器都支持。
+
+**第 1 步：复制下面的代码**
 
 ```javascript
 javascript:(function(){var s=document.createElement('script');s.src='https://cdn.jsdelivr.net/gh/nihaozyj7/selectdom@main/dom-picker.js';document.head.appendChild(s);})();
 ```
+
+**第 2 步：新建一个书签**（在任意网页上操作即可，比如当前页面）
+
+- 按 `Ctrl+D`（Mac 为 `Cmd+D`）收藏当前页面，名称随便填，例如 `SelectDom`
+
+**第 3 步：编辑书签，把「网址」替换为第 1 步复制的代码**
+
+- **Chrome / Edge**：按 `Ctrl+Shift+B` 显示书签栏 → 右键该书签 → 「修改…」；或打开书签管理器（`chrome://bookmarks`）→ 找到该书签 → 右键 → 「编辑」，把「网址」字段内容全部替换为上面的代码
+- **Firefox**：按 `Ctrl+Shift+O` 打开书签库 → 右键该书签 → 「属性」，把「位置」字段内容全部替换为上面的代码
+
+**第 4 步：保存**（Chrome / Edge 点「保存」，Firefox 关闭属性窗口即可），之后在任意网页点击该书签，页面右上角即会出现 SelectDom 面板。
 
 ### 方式二：HTML 一行引入
 
